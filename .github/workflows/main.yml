@@ -1,0 +1,78 @@
+steps:
+- uses: actions/checkout@v4
+- uses: phrase/setup-cli@v1
+  npm run prepare
+    version: 2.19.0
+- run: phrase pull
+- run: phrase push --wait
+  - nombre: Primera interacción Usos: actions/first-interaction@v1.3.0 Con: # Token para el repositorio. Se puede pasar usando {{ secrets.GITHUB_TOKEN }} token de recompra: # Comenta para publicar en el primer número de un individuo mensaje de emisión: # opcional # Comenta para publicar en la primera solicitud de extracción de un individuo pr-message: # opcional 
+    - nombre: Acción de despliegue de Velocity # Puede fijar a la confirmación exacta o a la versión. # usos: codeclimate/velocity-deploy-action@1b4a22f0db113bf8d85c14fd726cf0ec6d17cd13 usos: codeclimate/velocity-deploy-action@v1.0.0 Con: # Su token de implementación de Velocity Ficha: # La etiqueta de versión para la implementación (es decir, `b123`) versión: # opcional # El entorno de la implementación (es decir, `producción`) entorno: # opcional 
+    - main---- nombre: Cache Usos: actions/cache@v4.0.2 Con: # Una lista de archivos, directorios y patrones de comodines para almacenar en caché y restaurar Camino: # Una clave explícita para restaurar y guardar la caché Clave: # Una lista ordenada de claves que se utilizarán para restaurar la caché ranicia si no se produjo ningún golpe de caché para la clave. Tenga en cuenta que `cache-hit` devuelve falso en este caso. llaves de restauración: # opcional # El tamaño del fragmento utilizado para dividir archivos grandes durante la carga, en bytes upload-chunk-size: # opcional # Un booleano opcional cuando está habilitado, permite a los corredores de Windows guardar o restaurar cachés que se pueden restaurar o guardar respectivamente en otras plataformas enableCrossOsArchive: # opcional, el valor predeterminado es falso # Falla el flujo de trabajo si no se encuentra la entrada de caché fail-on-cache-miss: # opcional, el valor predeterminado es falso # Compruebe si existe una entrada de caché para la(s) entrada(s) dada(s) (clave, claves de restauración) sin descargar la caché solo búsqueda: # opcional, el valor predeterminado es falso # Ejecute el paso de publicación para guardar la caché incluso si otro paso antes falla save-always: # opcional, el valor predeterminado es falso 
+name: Lint
+
+on: # yamllint disable-line rule:truthy
+  push: null
+  pull_request: null      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-skip-session-tagging: true
+permissions: {}
+
+jobs:
+  build:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: read
+      # To report GitHub Actions status checks
+      statuses: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # super-linter needs the full git history to get the
+          # list of files that changed across commits
+          fetch-depth: 0
+
+      - name: Super-linter
+        uses: super-linter/super-linter@v7.1.0 # x-release-please-version
+        env:
+          # To report GitHub Actions status checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - release
+ubuntu-latest, ubuntu-22.04, oubuntu-w
+macos-latest, macos-13, omacos-12    
+- name: Setup Node
+  uses: actions/setup-node@v4
+  with:
+    - nombre: Codefresh pipeline runner # Puede fijar a la confirmación exacta o a la versión. # usos: codefresh-io/codefresh-pipeline-runner@c2fe0b32ae880220653855bc2254271a37441fb1 Usos: codefresh-io/codefresh-pipeline-runner@v8 Con: # codefresh cli construye variables, consulte https://codefresh-io.github.io/cli/pipelines/run-pipeline/#setting-variables-through-the-command para obtener más información. Args: # opcional 
+ jobs:
+  test:- nombre: NowSecure # Puede fijar a la confirmación exacta o a la versión. # usos: nowsecure/nowsecure-action@f5f990ada03919043d14f6cb1dbfdb6fccf5517d Usos: nowsecure/nowsecure-action@v1 Con: # Token de plataforma NowSecure. Ficha: # Punto final de la API de NowSecure GraphQL. api_url: # opcional, el valor predeterminado es https://api.nowsecure.com # Punto final de la API de NowSecure Lab. lab_api_url: # opcional, el valor predeterminado es https://lab-api.nowsecure.com # URL de NowSecure Lab. lab_url: # opcional, el valor predeterminado es https://lab.nowsecure.com # Ruta que contiene .nsconfig.yml config_path: # opcional, el valor predeterminado es . # Aplicación binaria para escanear en NowSecure. Debe ser una aplicación de Android o iOS. archivo_app: # ID de grupo para la aplicación en la plataforma. id_del_grupo: # Inicio en milisegundos para dar a la plataforma antes de que se sondee una aplicación para obtener detalles. El valor predeterminado es de 5 minutos. headstart_ms: # opcional, el valor predeterminado es 300000 # Intervalo para encuestar la plataforma para los detalles de la aplicación. El valor predeterminado es una vez por minuto. poll_interval_ms: # opcional, el valor predeterminado es 60000 # Habilitar la creación de un archivo SARIF. enable_sarif: # opcional, el valor predeterminado es verdadero # Habilitar la publicación de resultados de dependencias en GitHub. enable_dependencies: # opcional # github_token: # opcional, el valor predeterminado es ${{ github.token }} # Utilizado para el campo correlacionador en el formato SBOM. Distingue los flujos de trabajo independientes. github_correlator: # opcional, el valor predeterminado es ${{ format('{0}_{1}', github.workflow, github.job) }} 
+    name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    openssl base64 -in MyAppProvisioning.mobileprovision -A
+      matrix:- nombre: Algorithmia publish-algo # Puede fijar a la confirmación exacta o a la versión. # usos: algorithmiaio/publish-algo-action@aca3c2325ce2dc66951f14a88c2caf0c64ea55c4 Usos: algorithmiaio/publish-algo-action@v0.1.0-rc4 Con: # su clave API de gestión de algoritmos mgmt_api_key: # La dirección API para el clúster de algoritmos al que desea conectarse api_address: # opcional, el valor predeterminado es https://api.algorithmia.com # El nombre de este algoritmo en Algorithmia algoritmo_nombre: # identificador para describir cómo promocionar este lanzamiento version_schema: # opcional, el valor predeterminado es menor 
+        node_version: ['18.x', '20.x']
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+- nombre: Acción de despliegue de Velocity # Puede fijar a la confirmación exacta o a la versión. # usos: codeclimate/velocity-deploy-action@1b4a22f0db113bf8d85c14fd726cf0ec6d17cd13 usos: codeclimate/velocity-deploy-action@v1.0.0 Con: # Su token de implementación de Velocity Ficha: # La etiqueta de versión para la implementación (es decir, `b123`) versión: # opcional # El entorno de la implementación (es decir, `producción`) entorno: # opcional 
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node_version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node_version }}
+- nombre: Primera interacción Usos: actions/first-interaction@v1.3.0 Con: # Token para el repositorio. Se puede pasar usando {{ secrets.GITHUB_TOKEN }} token de recompra: # Comenta para publicar en el primer número de un individuo mensaje de emisión: # opcional # Comenta para publicar en la primera solicitud de extracción de un individuo pr-message: # opcional 
+    - name: npm install, build and test
+      run: |
+        npm install
+        npm run build --if-present
+        npm testsonar.organization=<replace with your SonarCloud organization key>
+sonar.projectKey=<replace with the key generated when setting up the project on SonarCloud>
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-skip-session-tagging: true
+# relative paths to source directories. More details and properties are described
+# in https://sonarcloud.io/documentation/project-administration/narrowing-the-focus/
+sonar.sources=.
